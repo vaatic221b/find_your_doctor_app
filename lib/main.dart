@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
       title: 'Find Your Doctor App, Sucalit - Parales',
       home: Scaffold(
         body: Center(
-          child: Text('Hello World!'),
+          child: Text('Hello Wor!'),
         ),
       ),
     );
