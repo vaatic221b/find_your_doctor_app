@@ -6,4 +6,4 @@ LMS activity
 Submitted by:
 
 Alexis J. Parales BSIT-3
-Cleverson Ray G. Sucalit BSIT-3
+and Cleverson Ray G. Sucalit BSIT-3
