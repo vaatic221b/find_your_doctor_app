@@ -10,31 +10,10 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: topBarButtons(),
       body: Container(
-        margin: EdgeInsets.fromLTRB(25, 10, 10, 10),
+        margin: const EdgeInsets.fromLTRB(25, 10, 10, 10),
         child: Column(
           children: [
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Find ',
-                    style: TextStyle(
-                      color: Color(0xFF25282B), // Color for "Find"
-                      fontSize: 35,
-                      fontFamily: GoogleFonts.lato().fontFamily,
-                    ),
-                  ),
-                  TextSpan(
-                    text: 'your doctor',
-                    style: TextStyle(
-                      color: Color(0xFFA0A4A8), // Color for "your doctor"
-                      fontSize: 35,
-                      fontFamily: GoogleFonts.lato().fontFamily,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            topText(),
 
             
             // Other widgets in the Column
@@ -44,7 +23,36 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  AppBar topBarButtons() {
+  RichText topText() //find your doctor text
+  {
+    return RichText(
+            text: TextSpan(
+              children: [
+                
+                TextSpan(
+                  text: 'Find ',
+                  style: TextStyle(
+                    color: const Color(0xFF25282B), 
+                    fontSize: 35,
+                    fontFamily: GoogleFonts.lato().fontFamily,
+                  )
+                ),
+
+                TextSpan(
+                  text: 'your doctor',
+                  style: TextStyle(
+                    color: const Color(0xFFA0A4A8), 
+                    fontSize: 35,
+                    fontFamily: GoogleFonts.lato().fontFamily,
+                  )
+                )
+              ]
+            )
+          );
+  }
+
+  AppBar topBarButtons() //top left menu and top right icon
+  {
     return AppBar(
       toolbarHeight: 100,
       backgroundColor: Colors.white,
@@ -52,24 +60,25 @@ class HomePage extends StatelessWidget {
       leading: GestureDetector(
         onTap: (){},
         child: Container(
-          margin: EdgeInsets.fromLTRB(25, 10, 10, 10),
+          margin: const EdgeInsets.only(left: 25),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(5)
+            borderRadius: BorderRadius.circular(10),
           ),
+          width: 70, 
+          height: 70, 
           child: Image.asset(
             'assets/icons/menu_icon.png',
-            height: 60,
-            width: 60,
-          )
+            fit: BoxFit.cover,
+          ),
         )
       ),
       actions: [
         GestureDetector(
         onTap: (){},
         child: Container(
-          margin: EdgeInsets.fromLTRB(10, 10, 25, 10),
+          margin: const EdgeInsets.fromLTRB(10, 10, 25, 10),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: Colors.white,
