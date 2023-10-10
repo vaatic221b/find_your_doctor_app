@@ -7,22 +7,24 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        toolbarHeight: 100,
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: GestureDetector(
           onTap: (){},
           child: Container(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.fromLTRB(25, 10, 10, 10),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Color(0xffF7F8F8),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(5)
             ),
             child: Image.asset(
               'assets/icons/menu_icon.png',
-              height: 20,
-              width: 20,
+              height: 60,
+              width: 60,
             ),
           ),
         ),
@@ -30,16 +32,16 @@ class HomePage extends StatelessWidget {
           GestureDetector(
           onTap: (){},
           child: Container(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.fromLTRB(10, 10, 25, 10),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Color(0xffF7F8F8),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(5)
             ),
             child: Image.asset(
               'assets/icons/top_icon.png',
-              height: 25,
-              width: 25,
+              height: 35,
+              width: 35,
             ),
           ),
         ),
