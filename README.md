@@ -1,3 +1,9 @@
 # find_your_doctor_app
 
-A new Flutter project.
+Find Your Doctor Application 
+LMS activity
+
+Submitted by:
+
+Alexis J. Parales BSIT-3
+Cleverson Ray G. Sucalit BSIT-3
