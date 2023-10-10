@@ -9,23 +9,25 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: topBarButtons(),
-      body: Container(
-        margin: const EdgeInsets.fromLTRB(25, 3, 25, 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            topText(),
-            const SizedBox(height: 30),
-            searchBar(),
-            const SizedBox(height: 25),
-            medFields(),  //not done 
-            const SizedBox(height: 30),
-            bottomText(), 
-            const SizedBox(height: 25),
-            findDoctor(), //not done
-
-          ]
-        )
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.fromLTRB(25, 3, 25, 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              topText(),
+              const SizedBox(height: 30),
+              searchBar(),
+              const SizedBox(height: 25),
+              medFields(),  //not done 
+              const SizedBox(height: 30),
+              bottomText(), 
+              const SizedBox(height: 25),
+              findDoctor(), //not done
+      
+            ]
+          )
+        ),
       )
     );
   }
@@ -169,7 +171,7 @@ class HomePage extends StatelessWidget {
   Container findDoctor() //list of doctors
   {
     return Container(
-      height: 185,
+      height: 400,
       color: Colors.lime
     );
   }
