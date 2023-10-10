@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: topBarButtons(),
       body: Container(
-        margin: const EdgeInsets.fromLTRB(25, 10, 10, 10),
+        margin: const EdgeInsets.fromLTRB(25, 3, 10, 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
                   fontSize: 13
                 ),
                 suffixIcon: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.fromLTRB(0, 0, 10.0, 0), 
                   child: Image.asset('assets/icons/search_icon.png'),
                 ),
                 border: OutlineInputBorder(
