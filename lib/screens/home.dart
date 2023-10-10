@@ -12,15 +12,46 @@ class HomePage extends StatelessWidget {
       body: Container(
         margin: const EdgeInsets.fromLTRB(25, 10, 10, 10),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             topText(),
+            const SizedBox(height: 30),
+            searchBar()
 
+            //i love you cupew @3@ 
             
             // Other widgets in the Column
           ]
         )
       )
     );
+  }
+
+  Container searchBar() //search bar
+  {
+    return Container(
+            margin: const EdgeInsets.only(right: 20),
+            child: TextField(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: const Color(0xFFF6F6F6),
+                contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+                hintText: 'Search doctor, medicines, etc',
+                hintStyle: const TextStyle(
+                  color: Color(0xFFCACCCF),
+                  fontSize: 13
+                ),
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset('assets/icons/search_icon.png'),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  borderSide: BorderSide.none
+                )
+              )
+            )
+          );
   }
 
   RichText topText() //find your doctor text
