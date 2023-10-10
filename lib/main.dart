@@ -11,7 +11,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Find Your Doctor App, Sucalit - Parales',
+      title: 'Find Your Doctor App',
       debugShowCheckedModeBanner: false,
       home: HomePage()
     );
