@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -21,3 +23,8 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+
+  fonts:
+    - family: SourceSansPro
+      fonts:
+        - asset: fonts/SourceSansPro-Regular.otf
