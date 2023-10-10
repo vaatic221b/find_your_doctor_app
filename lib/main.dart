@@ -1,5 +1,4 @@
 import 'package:find_your_doctor_app/screens/home.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 void main() {
