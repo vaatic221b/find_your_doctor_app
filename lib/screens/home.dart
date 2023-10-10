@@ -8,7 +8,39 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: topBarButtons()
+      appBar: topBarButtons(),
+      body: Container(
+        margin: EdgeInsets.fromLTRB(25, 10, 10, 10),
+        child: Column(
+          children: [
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Find ',
+                    style: TextStyle(
+                      color: Color(0xFF25282B), // Color for "Find"
+                      fontSize: 35,
+                      fontFamily: GoogleFonts.lato().fontFamily,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'your doctor',
+                    style: TextStyle(
+                      color: Color(0xFFA0A4A8), // Color for "your doctor"
+                      fontSize: 35,
+                      fontFamily: GoogleFonts.lato().fontFamily,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            
+            // Other widgets in the Column
+          ]
+        )
+      )
     );
   }
 
