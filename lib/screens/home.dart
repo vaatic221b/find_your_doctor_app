@@ -10,48 +10,49 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: topBarButtons(),
       body: Container(
-        margin: const EdgeInsets.fromLTRB(25, 3, 10, 10),
+        margin: const EdgeInsets.fromLTRB(25, 3, 25, 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             topText(),
             const SizedBox(height: 30),
-            searchBar()
+            searchBar(),
+            const SizedBox(height: 25),
+            medFields(),  //not done 
+            const SizedBox(height: 30),
+            bottomText(), 
+            const SizedBox(height: 25),
+            findDoctor(), //not done
 
-            //i love you cupew @3@ 
-            
-            // Other widgets in the Column
           ]
         )
       )
     );
   }
 
-  Container searchBar() //search bar
+  TextField searchBar() //search bar
   {
-    return Container(
-            margin: const EdgeInsets.only(right: 20),
-            child: TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: const Color(0xFFF6F6F6),
-                contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-                hintText: 'Search doctor, medicines, etc',
-                hintStyle: const TextStyle(
-                  color: Color(0xFFCACCCF),
-                  fontSize: 13
-                ),
-                suffixIcon: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 10.0, 0), 
-                  child: Image.asset('assets/icons/search_icon.png'),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5),
-                  borderSide: BorderSide.none
-                )
-              )
-            )
-          );
+    return TextField(
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: const Color(0xFFF6F6F6),
+        contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+        hintText: 'Search doctor, medicines, etc',
+        hintStyle: TextStyle(
+          fontFamily: GoogleFonts.lato().fontFamily,
+          color: const Color(0xFFCACCCF),
+          fontSize: 13
+        ),
+        suffixIcon: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 10.0, 0), 
+          child: Image.asset('assets/icons/search_icon.png'),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: BorderSide.none
+        )
+      )
+    );
   }
 
   RichText topText() //find your doctor text
@@ -123,6 +124,53 @@ class HomePage extends StatelessWidget {
         )
         )
       ]
+    );
+  }
+  
+  Container medFields() //row medical fields
+  {
+    return Container(
+      height: 185,
+      color: Colors.lime
+    );
+  }
+  
+  Row bottomText() { //top doctors and view all
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.baseline,
+      textBaseline: TextBaseline.alphabetic,
+      children: [
+        Expanded(
+          child: Text(
+            'Top Doctors',
+            style: GoogleFonts.lato(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Text(
+            'View all',
+            style: GoogleFonts.lato(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: const Color(0xFF4485FD),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  
+  Container findDoctor() //list of doctors
+  {
+    return Container(
+      height: 185,
+      color: Colors.lime
     );
   }
 }
