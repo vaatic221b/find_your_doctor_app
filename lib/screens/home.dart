@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
           child: Image.asset('assets/icons/search_icon.png'),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide.none
         )
       )
