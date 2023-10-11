@@ -1,4 +1,5 @@
 import 'package:find_your_doctor_app/models/doctor_model.dart';
+import 'package:find_your_doctor_app/models/fields_model.dart';
 import 'package:find_your_doctor_app/screens/doctor_details.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,14 +13,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<DoctorModel> doctors = [];
+  List<FieldsModel> medicalFields =[];
 
   void _getDoctors(){
     doctors = DoctorModel.getDoctors();
   }
 
+  void _getMedFields(){
+    medicalFields = FieldsModel.getMedicalFields();
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    _getMedFields();
     _getDoctors();
     return Scaffold(
       backgroundColor: Colors.white,
@@ -146,13 +153,57 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Container medFields() //row medical fields
-  {
-    return Container(
-      height: 195,
-      color: Colors.lime
-    );
-  }
+    Container medFields() {
+      return Container(
+        height: 195,
+        color: Colors.lime,
+        child: ListView.separated(
+        separatorBuilder: (context, index) => const SizedBox(height: 15),
+        scrollDirection: Axis.horizontal,
+        itemCount: medicalFields.length,
+        itemBuilder: (context, index)
+        {
+          return GestureDetector(
+            onTap: () {
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) {
+              //       return DoctorDetails(doctorIndex: index); 
+              //     },
+              //   ),
+              // );
+            },
+            child: Container(
+              height: 100,
+              color: Colors.white,
+              child: Row(
+                children: [
+                  doctorPicture(index),
+                  const SizedBox(width: 15),
+                  SizedBox(
+                    width: 232,
+                    child: Column(              
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 8),                
+                        doctorName(index),                 
+                        const SizedBox(height: 6),            
+                        doctorInfo(index),              
+                        const SizedBox(height: 15),              
+                        doctorRating(index)
+                      ],
+                    ),
+                  ),
+                ]
+                ),
+            ),
+          );
+        }
+        ), 
+      );
+    }
+
 
   Row bottomText() { //top doctors and view all
     return Row(

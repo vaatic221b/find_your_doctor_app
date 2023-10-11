@@ -262,7 +262,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
     return Padding(
               padding: const EdgeInsets.fromLTRB(20, 20, 0, 10),
               child: Text(
-                'dr. ${doctors[widget.doctorIndex].name}', //CHANGE DIS
+                'dr. ${doctors[widget.doctorIndex].name}', 
                 style: GoogleFonts.lato(
                   textStyle: const TextStyle(
                     color: Colors.black,
