@@ -1,11 +1,25 @@
+import 'package:find_your_doctor_app/models/doctor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<DoctorModel> doctors = [];
+
+  void _getDoctors(){
+    doctors = DoctorModel.getDoctors();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
+    _getDoctors();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: topBarButtons(),
@@ -31,6 +45,9 @@ class HomePage extends StatelessWidget {
       )
     );
   }
+
+
+// METHODS 
 
   TextField searchBar() //search bar
   {
@@ -61,8 +78,7 @@ class HomePage extends StatelessWidget {
   {
     return RichText(
             text: TextSpan(
-              children: [
-                
+              children: [             
                 TextSpan(
                   text: 'Find ',
                   style: TextStyle(
@@ -128,15 +144,15 @@ class HomePage extends StatelessWidget {
       ]
     );
   }
-  
+
   Container medFields() //row medical fields
   {
     return Container(
-      height: 185,
+      height: 195,
       color: Colors.lime
     );
   }
-  
+
   Row bottomText() { //top doctors and view all
     return Row(
       crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -157,7 +173,7 @@ class HomePage extends StatelessWidget {
           child: Text(
             'View all',
             style: GoogleFonts.lato(
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: FontWeight.bold,
               color: const Color(0xFF4485FD),
             ),
@@ -167,12 +183,139 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  
   Container findDoctor() //list of doctors
   {
     return Container(
-      height: 400,
-      color: Colors.lime
+      height: 250,
+      color: Colors.white,
+      child: ListView.separated(
+        separatorBuilder: (context, index) => const SizedBox(height: 15),
+        itemCount: doctors.length,
+        itemBuilder: (context, index)
+        {
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return DoctorDetails(doctorName: doctors[index].name);    //name the class DoctorDetails extends stateless widget etc etc so this works. Should open screen 2
+                  },
+                ),
+              );
+            },
+            child: Container(
+              height: 100,
+              color: Colors.white,
+              child: Row(
+                children: [
+                  doctorPicture(index),
+                  const SizedBox(width: 15),
+                  SizedBox(
+                    width: 232,
+                    child: Column(              
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 8),                
+                        doctorName(index),                 
+                        const SizedBox(height: 6),            
+                        doctorInfo(index),              
+                        const SizedBox(height: 15),              
+                        doctorRating(index)
+                      ],
+                    ),
+                  ),
+                ]
+                ),
+            ),
+          );
+        }
+        ),
     );
+  }
+
+  Container doctorPicture(int index) {
+    return Container(
+                width: 95,
+                height: 95,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12), 
+                  child: Image.asset(
+                    doctors[index].imagePath,
+                    fit: BoxFit.cover, 
+                  ),
+                ),
+              );
+  }
+
+  Text doctorName(int index) {
+    return Text(
+                      'dr. ${doctors[index].name}',
+                      style: GoogleFonts.lato(
+                        color: const Color(0xFF404345),
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold
+                        ),
+                      );                     
+  }
+
+  Text doctorInfo(int index) {
+    return Text(
+                      '${doctors[index].field}    \u2022    ${doctors[index].hospital}',
+                      style: GoogleFonts.lato(
+                        color: const Color(0xFFAAAAAA),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400
+                      ),
+                    );
+  }
+
+  Row doctorRating(int index) {
+    return Row(
+                      children: [
+                        ...List<Widget>.generate(5, (index) {
+                          return const Icon(
+                            Icons.star,
+                            color: Colors.yellow,
+                            size: 17
+                          );
+                        }),
+              
+                        Text(
+                          '  (${doctors[index].rating})',
+                          style: GoogleFonts.lato(
+                            color: const Color(0xFFC4C4C4),
+                            fontSize: 12,    
+                            ),
+                          ),
+                        
+                        const Spacer(),
+                        doctorStatus(index)
+
+                      ],
+                    );
+  }
+
+  Container doctorStatus(int index) {
+    return Container(
+                          width: 55,
+                          height: 25,
+                          decoration: BoxDecoration(
+                            color: doctors[index].status == 'Open' ? const Color(0xFFCCF5E1) : const Color(0xFFF7E4D9),
+                            borderRadius: BorderRadius.circular(3)
+                          ),
+                          child: Center(
+                            child: Text(
+                              doctors[index].status,
+                              style: TextStyle(
+                                color: doctors[index].status == 'Open' ? const Color(0xFF00CC6A) : const Color(0xFFCC4900),
+                                fontSize: 13
+                              ),
+                            ),
+                          ),
+                        );
   }
 }
