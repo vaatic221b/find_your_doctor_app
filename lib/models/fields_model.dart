@@ -1,6 +1,7 @@
 // ignore: unused_import
 import 'package:flutter/material.dart';
 
+//final
 class FieldsModel{
   String name;
   String iconPath;
