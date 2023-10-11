@@ -10,7 +10,7 @@ class DoctorModel{
   String exp;
   String patients;
   String digitRate;
-  //add description
+  String description;
 
   DoctorModel
   (
@@ -22,7 +22,8 @@ class DoctorModel{
       required this.status,
       required this.exp,
       required this.patients,
-      required this.digitRate
+      required this.digitRate,
+      required this.description
 
     }
   );
@@ -41,7 +42,8 @@ class DoctorModel{
       patients: '1221', 
       status: 'Open',
       exp: '3',
-      digitRate: '5.0'
+      digitRate: '5.0',
+      description: "dr. Gilang is one of the best doctors in the Persahabatan Hospital. He has saved more than 1000 patients in the past 3 years. He has also received many awards from domestic and abroad as the best doctors. He is available on a private or schedule. "
       )
     );
 
@@ -55,7 +57,8 @@ class DoctorModel{
       patients: '964', 
       status: 'Open',
       exp: '4',
-      digitRate: '5.0'
+      digitRate: '5.0',
+      description: "dr. Chan is one of the best doctors in the Columbia Asia Hospital. She has saved more than 800 patients in the past 4 years. She has also received many awards from domestic and abroad as the best doctors. She is available on a private or schedule. "
       )
     );
 
@@ -69,7 +72,8 @@ class DoctorModel{
       patients: '762', 
       status: 'Close',
       exp: '5',
-      digitRate: '5.0'
+      digitRate: '5.0',
+      description: "dr. Mustakim is one of the best doctors in the Salemba Carolus Asia Hospital. He has saved more than 600 patients in the past 5 years. He has also received many awards from domestic and abroad as the best doctors. He is available on a private or schedule. "
       )
     );
 
@@ -83,7 +87,8 @@ class DoctorModel{
       patients: '762', 
       status: 'Open',
       exp: '6',
-      digitRate: '5.0'
+      digitRate: '5.0',
+      description: "dr. Suprihatini is one of the best doctors in the Salemba Carolus Hospital. She has saved more than 600 patients in the past 6 years. She has also received many awards from domestic and abroad as the best doctors. She is available on a private or schedule. "
       )
     );
 
