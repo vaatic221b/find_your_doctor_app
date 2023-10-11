@@ -112,6 +112,8 @@ class _DoctorDetailsState extends State<DoctorDetails> {
         );
   }
 
+  //METHODS
+
   Column docRating() {
     return Column(
                     children: [
