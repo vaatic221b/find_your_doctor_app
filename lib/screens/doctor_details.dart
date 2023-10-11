@@ -1,39 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:find_your_doctor_app/models/doctor_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DoctorDetails extends StatelessWidget { //need to change parameters
-  final String docImg;
-  final String docName;
-  final String specialization;
-  final String hospital;
-  final String description;
-  final int exp;
-  final int patients;
-  final double rating;
+class DoctorDetails extends StatefulWidget { 
+  final int doctorIndex;
+
 
   const DoctorDetails(
       {Key? key,
-      required this.docImg,
-      required this.docName,
-      required this.specialization,
-      required this.hospital,
-      required this.description,
-      required this.exp,
-      required this.patients,
-      required this.rating})
-      : super(key: key);
+        required this.doctorIndex,
+      }
+      ): super(key: key);
+
+  @override
+  State<DoctorDetails> createState() => _DoctorDetailsState();
+}
+
+class _DoctorDetailsState extends State<DoctorDetails> {
+  List<DoctorModel> doctors = [];
+
+  void _getDoctors(){
+    doctors = DoctorModel.getDoctors();
+  }
 
   @override
   Widget build(BuildContext context) {
+    _getDoctors();
     return Scaffold(
-      backgroundColor: const Color(0xffeaeaea), //0xffeaeaea
+      backgroundColor: const Color(0xffeaeaea), 
       body: Column(
         children: [
           Stack(
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 50),
-                child: Image.asset(docImg)
+                child: Image.asset(doctors[widget.doctorIndex].imagePath) 
               ),
               const Positioned(
                 left: 10,
@@ -63,7 +64,7 @@ class DoctorDetails extends StatelessWidget { //need to change parameters
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 20, 0, 10),
                   child: Text(
-                    docName, //CHANGE DIS
+                    'dr. ${doctors[widget.doctorIndex].name}', //CHANGE DIS
                     style: GoogleFonts.lato(
                       textStyle: const TextStyle(
                         color: Colors.black,
@@ -78,7 +79,7 @@ class DoctorDetails extends StatelessWidget { //need to change parameters
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                       child: Text(
-                        specialization, //REPLACE
+                        doctors[widget.doctorIndex].field, 
                         style: GoogleFonts.lato(
                           textStyle: const TextStyle(
                           color: Color(0xffAAAAAA),
@@ -96,7 +97,7 @@ class DoctorDetails extends StatelessWidget { //need to change parameters
                       ),
                     ),
                      Text(
-                      hospital,
+                      doctors[widget.doctorIndex].hospital,
                       style: GoogleFonts.lato(
                         textStyle: const TextStyle(
                           color: Color(0xffAAAAAA),
@@ -109,7 +110,7 @@ class DoctorDetails extends StatelessWidget { //need to change parameters
                  Padding(
                    padding: const EdgeInsets.fromLTRB(20, 10, 40, 0),
                    child: Text(
-                    description,
+                    'Sample text neyenyeney', //please add description in doctor_model.dart so that igo nlng doctors[widget.doctorIndex].desc ang ibutang diri nga line
                     style: GoogleFonts.lato(
                       textStyle: const TextStyle(
                         color: Color(0xffAAAAAA),
@@ -139,7 +140,7 @@ class DoctorDetails extends StatelessWidget { //need to change parameters
                             child: Row(
                               children: [
                                 Text(
-                                  exp.toString(),
+                                  doctors[widget.doctorIndex].exp,
                                   style: GoogleFonts.lato(
                                     color: const Color(0xff2B92E4),
                                     fontSize: 24
@@ -179,7 +180,7 @@ class DoctorDetails extends StatelessWidget { //need to change parameters
                             child: Row(
                               children: [
                                 Text(
-                                  patients.toString(),
+                                 doctors[widget.doctorIndex].patients,
                                   style: GoogleFonts.lato(
                                     color: const Color(0xff2B92E4),
                                     fontSize: 24
@@ -219,7 +220,7 @@ class DoctorDetails extends StatelessWidget { //need to change parameters
                             child: Row(
                               children: [
                                 Text(
-                                  rating.toString(),
+                                  doctors[widget.doctorIndex].digitRate,
                                   style: GoogleFonts.lato(
                                     color: const Color(0xff2B92E4),
                                     fontSize: 24
@@ -247,7 +248,7 @@ class DoctorDetails extends StatelessWidget { //need to change parameters
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                          Image.asset('assets/icons/Icons-Comment.png',
+                          Image.asset('assets/icons/comment_icon.png',
                             )
                         ],
                       )

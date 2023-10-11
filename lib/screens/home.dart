@@ -1,4 +1,5 @@
 import 'package:find_your_doctor_app/models/doctor_model.dart';
+import 'package:find_your_doctor_app/screens/doctor_details.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -186,7 +187,7 @@ class _HomePageState extends State<HomePage> {
   Container findDoctor() //list of doctors
   {
     return Container(
-      height: 250,
+      height: 240,
       color: Colors.white,
       child: ListView.separated(
         separatorBuilder: (context, index) => const SizedBox(height: 15),
@@ -195,14 +196,14 @@ class _HomePageState extends State<HomePage> {
         {
           return GestureDetector(
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) {
-              //       return DoctorDetails(doctorName: doctors[index].name);    //name the class DoctorDetails extends stateless widget etc etc so this works. Should open screen 2
-              //     },
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return DoctorDetails(doctorIndex: index); 
+                  },
+                ),
+              );
             },
             child: Container(
               height: 100,
@@ -285,7 +286,7 @@ class _HomePageState extends State<HomePage> {
                         }),
               
                         Text(
-                          '  (${doctors[index].rating})',
+                          '  (${doctors[index].patients})',
                           style: GoogleFonts.lato(
                             color: const Color(0xFFC4C4C4),
                             fontSize: 12,    

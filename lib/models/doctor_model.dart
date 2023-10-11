@@ -1,3 +1,4 @@
+// ignore: unused_import
 import 'package:flutter/material.dart';
 
 class DoctorModel{
@@ -5,9 +6,11 @@ class DoctorModel{
   String name;
   String field;
   String hospital;
-  String rating;
   String status;
-
+  String exp;
+  String patients;
+  String digitRate;
+  //add description
 
   DoctorModel
   (
@@ -16,8 +19,11 @@ class DoctorModel{
       required this.name,
       required this.field,
       required this.hospital,
-      required this.rating,
-      required this.status
+      required this.status,
+      required this.exp,
+      required this.patients,
+      required this.digitRate
+
     }
   );
 
@@ -32,8 +38,10 @@ class DoctorModel{
       name: 'Gilang Segara Bening', 
       field: 'Heart', 
       hospital: 'Persahabatan Hospital', 
-      rating: '1221', 
-      status: 'Open'
+      patients: '1221', 
+      status: 'Open',
+      exp: '3',
+      digitRate: '5.0'
       )
     );
 
@@ -44,8 +52,10 @@ class DoctorModel{
       name: 'Shabil Chan', 
       field: 'Dental', 
       hospital: 'Columbia Asia Hospital', 
-      rating: '964', 
-      status: 'Open'
+      patients: '964', 
+      status: 'Open',
+      exp: '4',
+      digitRate: '5.0'
       )
     );
 
@@ -56,8 +66,10 @@ class DoctorModel{
       name: 'Mustakim', 
       field: 'Eye', 
       hospital: 'Salemba Carolus Hospital', 
-      rating: '762', 
-      status: 'Close'
+      patients: '762', 
+      status: 'Close',
+      exp: '5',
+      digitRate: '5.0'
       )
     );
 
@@ -68,8 +80,10 @@ class DoctorModel{
       name: 'Suprihatini', 
       field: 'Heart', 
       hospital: 'Salemba Carolus Hospital', 
-      rating: '762', 
-      status: 'Open'
+      patients: '762', 
+      status: 'Open',
+      exp: '6',
+      digitRate: '5.0'
       )
     );
 
