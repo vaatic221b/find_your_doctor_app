@@ -42,9 +42,8 @@ class _HomePageState extends State<HomePage> {
               searchBar(),
               const SizedBox(height: 25),
               medFields(),  
-              const SizedBox(height: 30),
               bottomText(), 
-              const SizedBox(height: 25),
+              const SizedBox(height: 10),
               findDoctor(), 
       
             ]
@@ -153,57 +152,54 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-    Container medFields() {
-      return Container(
-        height: 195,
-        color: Colors.lime,
-        child: ListView.separated(
-        separatorBuilder: (context, index) => const SizedBox(height: 15),
-        scrollDirection: Axis.horizontal,
+  Container medFields() {
+    return Container(
+      height: 195,
+      color: Colors.white,
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4, 
+        ),
         itemCount: medicalFields.length,
-        itemBuilder: (context, index)
-        {
-          return GestureDetector(
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) {
-              //       return DoctorDetails(doctorIndex: index); 
-              //     },
-              //   ),
-              // );
-            },
-            child: Container(
-              height: 100,
-              color: Colors.white,
-              child: Row(
-                children: [
-                  doctorPicture(index),
-                  const SizedBox(width: 15),
-                  SizedBox(
-                    width: 232,
-                    child: Column(              
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 8),                
-                        doctorName(index),                 
-                        const SizedBox(height: 6),            
-                        doctorInfo(index),              
-                        const SizedBox(height: 15),              
-                        doctorRating(index)
-                      ],
-                    ),
-                  ),
-                ]
+        itemBuilder: (context, index) {
+          FieldsModel field = medicalFields[index];
+          return Column(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(bottom: 5),
+                decoration: BoxDecoration(
+                color: field.boxColor,
+                borderRadius: BorderRadius.circular(10), 
                 ),
-            ),
+                width: 60,
+                height: 60,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(17.0),
+                      child: Image.asset(
+                        field.iconPath, 
+                        width: 60, 
+                        height: 60,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                field.name, 
+                textAlign: TextAlign.center,
+                style: GoogleFonts.lato(
+                  fontSize: 13
+                ),
+              ),
+            ],
           );
-        }
-        ), 
-      );
-    }
-
+        },
+      ),
+    );
+  }
 
   Row bottomText() { //top doctors and view all
     return Row(
@@ -238,7 +234,7 @@ class _HomePageState extends State<HomePage> {
   Container findDoctor() //list of doctors
   {
     return Container(
-      height: 240,
+      height: 290,
       color: Colors.white,
       child: ListView.separated(
         separatorBuilder: (context, index) => const SizedBox(height: 15),
