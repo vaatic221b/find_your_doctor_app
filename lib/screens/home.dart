@@ -34,11 +34,11 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 30),
               searchBar(),
               const SizedBox(height: 25),
-              medFields(),  //not done 
+              medFields(),  
               const SizedBox(height: 30),
               bottomText(), 
               const SizedBox(height: 25),
-              findDoctor(), //not done
+              findDoctor(), 
       
             ]
           )
