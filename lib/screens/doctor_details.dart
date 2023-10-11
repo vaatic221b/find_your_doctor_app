@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DoctorDetails extends StatelessWidget {
+class DoctorDetails extends StatelessWidget { //need to change parameters
   final String docImg;
   final String docName;
   final String specialization;
